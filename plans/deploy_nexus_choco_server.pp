@@ -1,6 +1,6 @@
-plan chocodemo::deploy_nexus_choco_server(
+plan chocobot5000::deploy_nexus_choco_server (
   TargetSpec $targets,
-  String $repo_name
+  String $repo_name,
 ) {
   apply($targets, _description => 'Installing Nexus OSS package via Chocolatey') {
     package { 'nexus-repository' :
@@ -32,5 +32,6 @@ plan chocodemo::deploy_nexus_choco_server(
         "/repositoryname=${repo_name}",
         '"',
       ],
+    }
   }
 }
