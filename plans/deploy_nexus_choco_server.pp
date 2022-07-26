@@ -15,10 +15,10 @@ plan chocobot5000::deploy_nexus_choco_server (
 
   $password = run_command('(Get-Content C:\ProgramData\sonatype-work\nexus3\admin.password).ToString()', $targets)[0]['stdout']
 
-  return $password
-
   run_command(
     "choco install chocolatey-nexus-repo -y -params \"'/username=admin /password=${password} /repositoryname=${repo_name}'\"",
     $targets
   )
+
+  return "The secret is ${password}"
 }
