@@ -23,10 +23,23 @@ plan chocobot5000::deploy_nexus_choco_server (
       'server' => $nexus_server
     }
   )
+
+  $api_key = run_task(
+    'chocobot5000::get_api_key',
+    $targets,
+    {
+      'password' => $password,
+      'server' => $nexus_server
+    }
+  )
   # run_command(
   #   "choco install chocolatey-nexus-repo -y --params=\"'/Username=admin /Password=${password} /RepositoryName=${repo_name} /ServerUri=http://${nexus_server}:8081'\"",
   #   $targets
   # )
-
-  return "The secret is ${password}"
+  $x = {
+    'server' => "http://${server}:8081",
+    'password' => $password,
+    'api_key' => $api_key,
+  }
+  return $x
 }

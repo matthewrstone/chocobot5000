@@ -1,0 +1,16 @@
+{
+    "description": "Get the API key",
+    "input_method": "powershell",
+    "parameters": {
+      "server": {
+        "description": "The name of the repo",
+        "type": "Optional[String[1]]",
+        "default": "foonozz"
+      },
+      "password": {
+        "description": "The password",
+        "type": "Optional[String[1]]",
+        "sensitive": true
+      }
+    }
+  }
