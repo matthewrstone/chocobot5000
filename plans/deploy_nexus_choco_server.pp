@@ -9,7 +9,7 @@ plan chocobot5000::deploy_nexus_choco_server (
   #   }
   # }
 
-  $nexus_server = get_targets($targets).map |$n| { $n.name }
+  $nexus_server = (get_targets($targets).map |$n| { $n.name })[0]
   run_command(
     'netsh advfirewall firewall add rule name="Nexus" dir=in action=allow protocol=TCP localport=8081',
     $targets,
@@ -28,7 +28,6 @@ plan chocobot5000::deploy_nexus_choco_server (
   )
 
   return $password
- 
 
   # apply($targets) {
   #   package { 'chocolatey-nexus-repo':
