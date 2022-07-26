@@ -17,7 +17,7 @@ Start-Sleep -Seconds 60
 choco install chocolatey-nexus-repo --version 1.0.0 --params="'/username=admin /password=$password /repositoryname=choco /serveruri=http://${server}:8081'"
 
 ### API KEY
-$credPair = "admin:${tempPw}"
+$credPair = "admin:${password}"
 $encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($credPair))
 
 $header = @{
@@ -54,6 +54,6 @@ $result.result | Out-File C:\my_api_key.txt -Encoding Ascii -Force
 $tempPw | Out-File C:\my_nexus_pw.txt -Encoding Ascii -Force
 
 return @{
-    password = $tempPw
+    password = $password
     apikey = $result.result
 } | ConvertTo-Json
