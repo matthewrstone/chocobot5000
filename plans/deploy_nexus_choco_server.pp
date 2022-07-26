@@ -10,14 +10,14 @@ plan chocobot5000::deploy_nexus_choco_server (
   # }
   run_command(
     'netsh advfirewall firewall add rule name="Nexus" dir=in action=allow protocol=TCP localport=8081',
-    _description => 'Configuring firewall settings...',
-    $targets
+    $targets,
+    _description => 'Configuring firewall settings...'
   )
 
   run_command(
     'choco install nexus-repository -y',
+    $targets,
     _description => 'Installing Nexus Repository package via Chocolatey',
-    $targets
   )
 
   $password = run_command(
