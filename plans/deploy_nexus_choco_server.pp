@@ -19,7 +19,6 @@ plan chocobot5000::deploy_nexus_choco_server (
     'chocobot5000::install_choco_repo',
     $targets,
     {
-      'username' => 'admin',
       'password' => $password,
       'server' => $nexus_server
     }
