@@ -8,6 +8,8 @@ plan chocobot5000::deploy_nexus_choco_server (
   #     provider => chocolatey,
   #   }
   # }
+
+  $nexus_server = get_targets($targets).map |$n| { $n.name }
   run_command(
     'netsh advfirewall firewall add rule name="Nexus" dir=in action=allow protocol=TCP localport=8081',
     $targets,
@@ -15,7 +17,7 @@ plan chocobot5000::deploy_nexus_choco_server (
   )
 
   run_command(
-    'choco install nexus-repository -y',
+    "choco install nexus-repository -y  -params \"'/Fqdn:${nexus_server}'\"'",
     $targets,
     _description => 'Installing Nexus Repository package via Chocolatey',
   )
