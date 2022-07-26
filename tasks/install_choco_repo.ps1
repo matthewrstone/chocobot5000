@@ -14,7 +14,7 @@ Restart-Service Nexus
 Start-Sleep -Seconds 15
 
 ### INSTALL CHOCO REPO ###
-choco install chocolatey-nexus-repo --version 1.0.0 --params="'/username=admin /password=$password /repositoryname=choco'"
+choco install chocolatey-nexus-repo --version 1.0.0 --params="'/username=admin /password=$password /repositoryname=choco /serveruri=http://${server}:8081'"
 
 ### API KEY
 $credPair = "admin:${tempPw}"
