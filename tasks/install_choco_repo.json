@@ -1,10 +1,11 @@
 {
     "description": "Install the Nexus chocolatey repo",
-    "input_method": "stdin",
+    "input_method": "powershell",
     "parameters": {
       "server": {
         "description": "The name of the repo",
-        "type": "Optional[String[1]]"
+        "type": "Optional[String[1]]",
+        "default": "foonozz"
       },
       "username": {
         "description": "The user",
